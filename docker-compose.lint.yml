@@ -1,0 +1,5 @@
+lint:
+    build: .
+    command: npm run lint
+    volumes:
+        - .:/usr/src/app

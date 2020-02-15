@@ -1,0 +1,41 @@
+{
+    "env": {
+        "es6": true,
+        "node": true
+    },
+    "extends": [
+        "eslint:recommended",
+        "plugin:@typescript-eslint/eslint-recommended"
+    ],
+    "globals": {
+        "Atomics": "readonly",
+        "SharedArrayBuffer": "readonly"
+    },
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "ecmaVersion": 2018,
+        "sourceType": "module"
+    },
+    "plugins": [
+        "@typescript-eslint"
+    ],
+    "rules": {
+        "indent": ["error", "tab"], // identação com tabulação
+        "linebreak-style": ["error", "unix"], // Estilo de quebra de linha do unix
+        "quotes": ["error", "single", { "avoidEscape": true }], // aspas simples
+        "semi": ["error", "never"], // nega uso de ponto e vírgula
+		"no-tabs": 0, // com tabulação
+		"spaced-comment": ["error", "always"], // espaço depois de comentário
+		"space-before-blocks": ["error", "always"], // espaço antes de bloco de código
+		"curly": "off", // if de somente 1 (um) comando pode não ter chaves
+		"no-mixed-operators": "off", // permite que os operadores "&&" e "||" possam ser usados misturados sem parênteses
+		"no-unused-vars": "off", // variáveis declaradas não precisam necessariamente ser usadas
+		"require-atomic-updates": "off", // permite ações sincronas independentes serem realizadas depois de await
+		"no-mixed-spaces-and-tabs": "off", // permite que espaços e tabulações sejam misturados
+		"no-irregular-whitespace": "off", // permite que qualquer tipo de espaço em branco ocorra em conjunto com outros
+		"no-useless-escape": "off" // não sei, mas se não estiver "off", pode dar problema em alguma coisa que não me importo
+		// "no-eval": "off", // permite a utilização do eval
+		// "linebreak-style": "off", // não se importar com LF ou CRLF
+		// "strict": "error"
+    }
+}

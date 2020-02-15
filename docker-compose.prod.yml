@@ -1,0 +1,23 @@
+db:
+    image: postgres:10-alpine
+    environment:
+        POSTGRES_USER: postgres
+        POSTGRES_PASSWORD: postgres
+        POSTGRES_DB: firegallery
+    ports:
+        - 7432:5432
+    volumes:
+        - DATA:/var/lib/postgresql/data
+prod:
+    build: .
+    command: npm run start
+    ports:
+        - 3886:3886
+    environment: 
+        NODE_ENV: production
+        DOCKER_USE: 1
+        DB_USER: postgres
+        DB_PASSWORD: postgres
+        DB_NAME: firegallery
+    links:
+        - db

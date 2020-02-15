@@ -1,0 +1,18 @@
+{
+    "type": "postgres",
+    "host": "db_dev",
+    "port": 5432,
+    "username": "postgres",
+    "password": "postgres",
+    "database": "firegallery",
+    "synchronize": true,
+    "logging": false,
+    "entities": ["src/model/*.ts"],
+    "subscribers": ["src/subscriber/*.ts"],
+    "migrations": ["src/migration/*.ts"],
+    "cli": {
+        "entitiesDir": "src/model",
+        "subscribersDir": "src/subscriber",
+        "migrationsDir": "src/migration"
+    }
+}
