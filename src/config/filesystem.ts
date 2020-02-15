@@ -1,10 +1,10 @@
 import { resolve } from 'path'
 import mkdirp from 'mkdirp'
 
-const FOLDERS: string[] = [
-	'DATA'
-]
+const FOLDERS: string[] = []
 
 for (let folder of FOLDERS) {
-	mkdirp(resolve(__dirname, '..', '..', folder))
+	if (folder) {
+		mkdirp(resolve(__dirname, '..', '..', folder))
+	}
 }
