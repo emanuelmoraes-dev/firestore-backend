@@ -9,7 +9,7 @@ db_dev:
     volumes:
         - DATA:/var/lib/postgresql/data
 start_dev:
-    build: .
+    build: ./docker
     command: npm run start:dev
     ports:
         - 3886:3886

@@ -9,7 +9,7 @@ db_test:
     volumes:
         - DATA:/var/lib/postgresql/data
 test:
-    build: .
+    build: ./docker
     command: npm run test
     environment:
         NODE_ENV: test

@@ -1,4 +1,4 @@
-db_dev:
+db:
     image: postgres:10-alpine
     environment:
         POSTGRES_USER: postgres
@@ -8,18 +8,16 @@ db_dev:
         - 7432:5432
     volumes:
         - DATA:/var/lib/postgresql/data
-dev:
-    build: .
-    command: npm run dev
-    volumes:
-        - .:/usr/src/app
+prod:
+    build: ./docker
+    command: npm run start
     ports:
         - 3886:3886
-    environment:
-        NODE_ENV: development
+    environment: 
+        NODE_ENV: production
         DOCKER_USE: 1
         DB_USER: postgres
         DB_PASSWORD: postgres
         DB_NAME: firegallery
     links:
-        - db_dev
+        - db

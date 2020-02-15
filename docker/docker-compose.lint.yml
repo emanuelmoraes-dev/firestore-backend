@@ -1,5 +1,5 @@
 lint:
-    build: .
+    build: ./docker
     command: npm run lint
     volumes:
         - .:/usr/src/app
