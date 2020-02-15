@@ -4,10 +4,11 @@ db_test:
         POSTGRES_USER: postgres
         POSTGRES_PASSWORD: postgres
         POSTGRES_DB: firegallery-test
+        PGDATA: /var/lib/postgresql/data/pgdata
     ports:
         - 7432:5432
     volumes:
-        - DATA:/var/lib/postgresql/data
+        - ./DATA:/var/lib/postgresql/data/pgdata
 test:
     build: ./docker
     command: npm run test
