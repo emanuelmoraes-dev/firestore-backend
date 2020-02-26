@@ -1,6 +1,7 @@
 import { PrimaryGeneratedColumn, Column, OneToOne, JoinColumn } from 'typeorm'
 import { Content } from './Content'
 import { Movie } from './Movie'
+import { Image } from './Image'
 
 export class Link {
 
@@ -26,5 +27,8 @@ export class Link {
 
 	@OneToOne(type => Movie, movie => movie.link)
 	movie: Movie
+
+	@OneToOne(type => Image, image => image.link)
+	image: Image
 
 }

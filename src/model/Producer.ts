@@ -1,9 +1,11 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToMany, ManyToOne, JoinColumn } from 'typeorm'
+import { PrimaryGeneratedColumn, Entity, Column, OneToOne, JoinColumn, ManyToMany, ManyToOne } from 'typeorm'
+import { Link } from './Link'
+import { Image } from './Image'
 import { Content } from './Content'
 import { Profile } from './Profile'
 
 @Entity()
-export class Tag {
+export class Producer {
 
 	@PrimaryGeneratedColumn()
 	id: number
@@ -15,12 +17,16 @@ export class Tag {
 	name: string
 
 	@Column({ nullable: true })
-	identityGroup: string
+	@OneToOne(type => Link)
+	@JoinColumn()
+	link: Link
 
 	@Column({ nullable: true })
-	group: string
+	@OneToOne(type => Image)
+	@JoinColumn()
+	icon: Image
 
-	@ManyToMany(type=> Content, content => content.tags)
+	@ManyToMany(type => Content, content => content.producers)
 	contents: Content[]
 
 	@Column({ nullable: false })

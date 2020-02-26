@@ -1,5 +1,6 @@
-import { PrimaryGeneratedColumn, Column, OneToOne, JoinColumn } from 'typeorm'
+import { PrimaryGeneratedColumn, Column, OneToOne, JoinColumn, ManyToMany, JoinTable } from 'typeorm'
 import { Link } from './Link'
+import { Actor } from './Actor'
 
 export class Image {
 
@@ -11,6 +12,10 @@ export class Image {
 
 	@Column({ nullable: true })
 	height: number
+
+	@ManyToMany(type => Actor, actor => actor.images)
+	@JoinTable()
+	actors: Actor[]
 
 	@Column({ nullable: true })
 	@OneToOne(type => File)
