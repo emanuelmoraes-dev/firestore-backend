@@ -1,4 +1,5 @@
 lint:
+    user: root
     build: ./docker
     command: npm run lint
     volumes:

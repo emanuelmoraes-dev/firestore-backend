@@ -10,8 +10,11 @@ db_dev:
     volumes:
         - ./DATA:/var/lib/postgresql/data/pgdata
 start_dev:
+    user: root
     build: ./docker
     command: npm run start:dev
+    volumes:
+        - ./.firegallery:/root/.firegallery
     ports:
         - 3886:3886
     environment: 

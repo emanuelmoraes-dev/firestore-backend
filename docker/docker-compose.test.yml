@@ -10,8 +10,11 @@ db_test:
     volumes:
         - ./DATA:/var/lib/postgresql/data/pgdata
 test:
+    user: root
     build: ./docker
     command: npm run test
+    volumes:
+        - ./.firegallery:/root/.firegallery
     environment:
         NODE_ENV: test
         DOCKER_USE: 1

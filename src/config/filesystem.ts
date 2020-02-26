@@ -1,10 +1,10 @@
 import { resolve } from 'path'
 import mkdirp from 'mkdirp'
+import os from 'os'
 
-const FOLDERS: string[] = []
+// HOME FOLDERS
 
-for (let folder of FOLDERS) {
-	if (folder) {
-		mkdirp(resolve(__dirname, '..', '..', folder))
-	}
-}
+export const ROOT = resolve(os.homedir(), '.firegallery')
+export const FILES = resolve(ROOT, 'files')
+
+mkdirp(FILES)
