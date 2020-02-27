@@ -23,6 +23,12 @@ export class Content extends BaseModel {
 	@Column({ nullable: false })
 	name: string
 
+	@Column({ default: 0 })
+	views: number
+
+	@Column({ nullable: true })
+	lastViewDate: Date
+
 	@Column({ nullable: true })
 	stars: number
 
