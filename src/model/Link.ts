@@ -8,9 +8,6 @@ import { BaseModel } from './BaseModel'
 export class Link extends BaseModel {
 
 	@Column({ nullable: false })
-	type: string
-
-	@Column({ nullable: false })
 	url: string
 
 	@Column({ nullable: false })
