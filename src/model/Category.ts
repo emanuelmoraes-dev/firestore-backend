@@ -1,13 +1,11 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToOne, JoinColumn, ManyToOne, ManyToMany } from 'typeorm'
+import { Entity, Column, OneToOne, JoinColumn, ManyToOne, ManyToMany } from 'typeorm'
 import { Image } from './Image'
 import { Content } from './Content'
 import { Profile } from './Profile'
+import { BaseModel } from './BaseModel'
 
 @Entity()
-export class Category {
-
-	@PrimaryGeneratedColumn()
-	id: number
+export class Category extends BaseModel {
 
 	@Column({ nullable: false })
 	identityName: string
@@ -15,21 +13,18 @@ export class Category {
 	@Column({ nullable: false })
 	name: string
 
-	@Column({ nullable: true })
-	@ManyToOne(type => Category)
+	@ManyToOne(type => Category, { nullable: true })
 	@JoinColumn()
 	dependency: Category
 
-	@Column({ nullable: true })
-	@OneToOne(type => Image)
+	@OneToOne(type => Image, { nullable: true })
 	@JoinColumn()
 	cover: Image
 
 	@ManyToMany(type => Content, content => content.categories)
 	contents: Content[]
 
-	@Column({ nullable: false })
-	@ManyToOne(type => Profile)
+	@ManyToOne(type => Profile, { nullable: false })
 	@JoinColumn()
 	profile: Profile
 

@@ -1,20 +1,17 @@
-import { Entity, PrimaryGeneratedColumn, JoinColumn, OneToOne, Column, ManyToMany, JoinTable } from 'typeorm'
+import { Entity, JoinColumn, OneToOne, Column, ManyToMany, JoinTable } from 'typeorm'
 import { File } from './File'
 import { Link } from './Link'
 import { Image } from './Image'
 import { Actor } from './Actor'
+import { BaseModel } from './BaseModel'
 
 @Entity()
-export class Movie {
-
-	@PrimaryGeneratedColumn()
-	id: number
+export class Movie extends BaseModel {
 
 	@Column({ nullable: false })
 	duration: number
 
-	@Column({ nullable: true })
-	@OneToOne(type => Image)
+	@OneToOne(type => Image, { nullable: false })
 	@JoinColumn()
 	cover: Image
 
@@ -22,13 +19,11 @@ export class Movie {
 	@JoinTable()
 	actors: Actor[]
 
-	@Column({ nullable: true })
-	@OneToOne(type => File)
+	@OneToOne(type => File, { nullable: true })
 	@JoinColumn()
 	file: File
 
-	@Column({ nullable: true })
-	@OneToOne(type => Link)
+	@OneToOne(type => Link, { nullable: true })
 	@JoinColumn()
 	link: Link
 

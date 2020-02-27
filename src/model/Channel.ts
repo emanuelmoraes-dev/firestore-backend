@@ -1,14 +1,12 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToOne, JoinColumn, OneToMany, ManyToOne } from 'typeorm'
+import { Entity, Column, OneToOne, JoinColumn, OneToMany, ManyToOne } from 'typeorm'
 import { Image } from './Image'
 import { Link } from './Link'
 import { Content } from './Content'
 import { Profile } from './Profile'
+import { BaseModel } from './BaseModel'
 
 @Entity()
-export class Channel {
-
-	@PrimaryGeneratedColumn()
-	id: number
+export class Channel extends BaseModel {
 
 	@Column({ nullable: false })
 	identityName: string
@@ -16,21 +14,18 @@ export class Channel {
 	@Column({ nullable: false })
 	name: string
 
-	@Column({ nullable: false })
-	@OneToOne(type => Link)
+	@OneToOne(type => Link, { nullable: false })
 	@JoinColumn()
 	link: Link
 
-	@Column({ nullable: true })
-	@OneToOne(type => Image)
+	@OneToOne(type => Image, { nullable: true })
 	@JoinColumn()
 	cover: Image
 
 	@OneToMany(type => Content, content => content.channel)
 	contents: Content[]
 
-	@Column({ nullable: false })
-	@ManyToOne(type => Profile)
+	@ManyToOne(type => Profile, { nullable: false })
 	@JoinColumn()
 	profile: Profile
 

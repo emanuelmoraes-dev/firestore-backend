@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToOne, ManyToMany, JoinTable, ManyToOne, JoinColumn } from 'typeorm'
+import { Entity, Column, OneToOne, ManyToMany, JoinTable, ManyToOne, JoinColumn } from 'typeorm'
 import { File } from './File'
 import { Category } from './Category'
 import { Link } from './Link'
@@ -7,12 +7,10 @@ import { Channel } from './Channel'
 import { Producer } from './Producer'
 import { Document } from './Document'
 import { Profile } from './Profile'
+import { BaseModel } from './BaseModel'
 
 @Entity()
-export class Content {
-
-	@PrimaryGeneratedColumn()
-	id: number
+export class Content extends BaseModel {
 
 	@Column({ nullable: false })
 	identityOriginalName: string
@@ -38,8 +36,7 @@ export class Content {
 	@Column({ default: true })
 	active: boolean
 
-	@Column({ nullable: true })
-	@ManyToOne(type => Channel)
+	@ManyToOne(type => Channel, { nullable: true })
 	@JoinColumn()
 	channel: Channel
 
@@ -64,8 +61,7 @@ export class Content {
 	@OneToOne(type => Document, document => document.content)
 	document: Document
 
-	@Column({ nullable: false })
-	@ManyToOne(type => Profile)
+	@ManyToOne(type => Profile, { nullable: false })
 	@JoinColumn()
 	profile: Profile
 

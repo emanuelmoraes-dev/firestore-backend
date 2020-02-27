@@ -1,11 +1,9 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToMany } from 'typeorm'
+import { Entity, Column, ManyToMany } from 'typeorm'
 import { Person } from './Person'
+import { BaseModel } from './BaseModel'
 
 @Entity()
-export class Feature {
-
-	@PrimaryGeneratedColumn()
-	id: number
+export class Feature extends BaseModel {
 
 	@Column({ nullable: false })
 	identityName: string

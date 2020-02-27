@@ -1,12 +1,11 @@
-import { PrimaryGeneratedColumn, Column, OneToOne, JoinColumn } from 'typeorm'
+import { Entity, Column, OneToOne, JoinColumn } from 'typeorm'
 import { Content } from './Content'
 import { Movie } from './Movie'
 import { Image } from './Image'
+import { BaseModel } from './BaseModel'
 
-export class Link {
-
-	@PrimaryGeneratedColumn()
-	id: number
+@Entity()
+export class Link extends BaseModel {
 
 	@Column({ nullable: false })
 	type: string
@@ -20,8 +19,7 @@ export class Link {
 	@Column({ nullable: false })
 	sourceName: string
 
-	@Column({ nullable: false })
-	@OneToOne(type => Content)
+	@OneToOne(type => Content, { nullable: false })
 	@JoinColumn()
 	content: Content
 

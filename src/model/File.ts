@@ -1,13 +1,11 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToOne, JoinColumn } from 'typeorm'
+import { Entity, Column, OneToOne, JoinColumn } from 'typeorm'
 import { Movie } from './Movie'
 import { Content } from './Content'
 import { Image } from './Image'
+import { BaseModel } from './BaseModel'
 
 @Entity()
-export class File {
-
-	@PrimaryGeneratedColumn()
-	id: number
+export class File extends BaseModel {
 
 	@Column({ nullable: false })
 	filename: string
@@ -15,8 +13,7 @@ export class File {
 	@Column({ nullable: false })
 	type: string
 
-	@Column({ nullable: false })
-	@OneToOne(type => Content)
+	@OneToOne(type => Content, { nullable: false })
 	@JoinColumn()
 	content: Content
 

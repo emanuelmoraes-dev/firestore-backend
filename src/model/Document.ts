@@ -1,11 +1,9 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToOne, JoinColumn } from 'typeorm'
+import { Entity, Column, OneToOne, JoinColumn } from 'typeorm'
 import { Content } from './Content'
+import { BaseModel } from './BaseModel'
 
 @Entity()
-export class Document {
-
-	@PrimaryGeneratedColumn()
-	id: number
+export class Document extends BaseModel {
 
 	@Column({ nullable: false })
 	text: string
@@ -13,8 +11,7 @@ export class Document {
 	@Column({ nullable: true })
 	resume: string
 
-	@Column({ nullable: false })
-	@OneToOne(type => Content)
+	@OneToOne(type => Content, { nullable: false })
 	@JoinColumn()
 	content: Content
 

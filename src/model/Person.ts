@@ -1,13 +1,11 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToOne, JoinColumn, ManyToMany, JoinTable } from 'typeorm'
+import { Entity, Column, OneToOne, JoinColumn, ManyToMany, JoinTable } from 'typeorm'
 import { Actor } from './Actor'
 import { Image } from './Image'
 import { Feature } from './Feature'
+import { BaseModel } from './BaseModel'
 
 @Entity()
-export class Person {
-
-	@PrimaryGeneratedColumn()
-	id: number
+export class Person extends BaseModel {
 
 	@Column({ nullable: false })
 	identityName: string
@@ -22,8 +20,7 @@ export class Person {
 	@JoinTable()
 	features: Feature[]
 
-	@Column({ nullable: true })
-	@OneToOne(type => Image)
+	@OneToOne(type => Image, { nullable: true })
 	@JoinColumn()
 	photo: Image
 

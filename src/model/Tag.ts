@@ -1,12 +1,10 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToMany, ManyToOne, JoinColumn } from 'typeorm'
+import { Entity, Column, ManyToMany, ManyToOne, JoinColumn } from 'typeorm'
 import { Content } from './Content'
 import { Profile } from './Profile'
+import { BaseModel } from './BaseModel'
 
 @Entity()
-export class Tag {
-
-	@PrimaryGeneratedColumn()
-	id: number
+export class Tag extends BaseModel {
 
 	@Column({ nullable: false })
 	identityName: string
@@ -23,8 +21,7 @@ export class Tag {
 	@ManyToMany(type=> Content, content => content.tags)
 	contents: Content[]
 
-	@Column({ nullable: false })
-	@ManyToOne(type => Profile)
+	@ManyToOne(type => Profile, { nullable: false })
 	@JoinColumn()
 	profile: Profile
 

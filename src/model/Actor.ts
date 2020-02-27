@@ -1,14 +1,12 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToOne, JoinColumn, ManyToMany, ManyToOne } from 'typeorm'
+import { Entity, Column, OneToOne, JoinColumn, ManyToMany, ManyToOne } from 'typeorm'
 import { Person } from './Person'
 import { Movie } from './Movie'
 import { Image } from './Image'
 import { Profile } from './Profile'
+import { BaseModel } from './BaseModel'
 
 @Entity()
-export class Actor {
-
-	@PrimaryGeneratedColumn()
-	id: number
+export class Actor extends BaseModel {
 
 	@Column({ nullable: true })
 	stars: number
@@ -22,13 +20,11 @@ export class Actor {
 	@ManyToMany(type => Image, image => image.actors)
 	images: Image[]
 
-	@Column({ nullable: false })
-	@OneToOne(type => Person)
+	@OneToOne(type => Person, { nullable: false })
 	@JoinColumn()
 	person: Person
 
-	@Column({ nullable: false })
-	@ManyToOne(type => Profile)
+	@ManyToOne(type => Profile, { nullable: false })
 	@JoinColumn()
 	profile: Profile
 
