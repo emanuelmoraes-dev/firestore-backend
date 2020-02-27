@@ -1,6 +1,7 @@
 import { Entity, Column, OneToOne, JoinColumn } from 'typeorm'
 import { Content } from './Content'
 import { BaseModel } from './BaseModel'
+import { File } from './File'
 
 @Entity()
 export class Document extends BaseModel {
@@ -14,5 +15,9 @@ export class Document extends BaseModel {
 	@OneToOne(type => Content, { nullable: false })
 	@JoinColumn()
 	content: Content
+
+	@OneToOne(type => File, { nullable: false })
+	@JoinColumn()
+	file: File
 
 }

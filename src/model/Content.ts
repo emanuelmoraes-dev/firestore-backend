@@ -5,7 +5,6 @@ import { Link } from './Link'
 import { Tag } from './Tag'
 import { Channel } from './Channel'
 import { Producer } from './Producer'
-import { Document } from './Document'
 import { Profile } from './Profile'
 import { BaseModel } from './BaseModel'
 
@@ -57,9 +56,6 @@ export class Content extends BaseModel {
 
 	@OneToOne(type => Link, link => link.content)
 	link: Link
-
-	@OneToOne(type => Document, document => document.content)
-	document: Document
 
 	@ManyToOne(type => Profile, { nullable: false })
 	@JoinColumn()

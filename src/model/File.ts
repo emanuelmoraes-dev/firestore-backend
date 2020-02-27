@@ -3,6 +3,7 @@ import { Movie } from './Movie'
 import { Content } from './Content'
 import { Image } from './Image'
 import { BaseModel } from './BaseModel'
+import { Document } from './Document'
 
 @Entity()
 export class File extends BaseModel {
@@ -22,5 +23,8 @@ export class File extends BaseModel {
 
 	@OneToOne(type => Image, image => image.file)
 	image: Image
+
+	@OneToOne(type => Document, document => document.file)
+	document: Document
 
 }
