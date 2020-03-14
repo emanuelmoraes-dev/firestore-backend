@@ -8,17 +8,18 @@
         "declaration": true,
         "experimentalDecorators": true,
         "emitDecoratorMetadata": true,
-
-        "noUnusedLocals": true,
-        "noImplicitReturns": true,
         "resolveJsonModule": true,
-        // "strict": true,
+
+        "strict": true,
         "alwaysStrict": true,
         "strictNullChecks": true,
         "strictFunctionTypes": true,
         "noImplicitAny": false,
         "noImplicitThis": false,
         "strictPropertyInitialization": false,
+
+        "noUnusedLocals": true,
+        "noImplicitReturns": true,
         "noUnusedParameters": false
     },
     "include": ["src/**/*"],
