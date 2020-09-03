@@ -2,7 +2,7 @@ import app from './app'
 import ormconfig from '../ormconfig.json'
 import { createConnection, ConnectionOptions } from 'typeorm'
 import ormGlobal from './orm-global'
-import www from '@emanuelmoraes-dev/www-express'
+import www from 'www-express'
 import Debug from 'debug'
 
 const debug = Debug('firegallery-backend:server')
